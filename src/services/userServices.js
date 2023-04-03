@@ -7,7 +7,7 @@ async function create({name, email, password}){
     if (rowCount) return resizeBy.sendStatus(409)
 
     const hashPassword = await bcrypt.hash(password, 10)
-    await userRepositories.create({name, email, password})
+    await userRepositories.create({name, email, password: hashPassword})
 }
 
 export default {
